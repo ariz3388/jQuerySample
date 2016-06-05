@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Sample Page</title>
+	<meta charset="utf-8" />
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.min.js" ></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#CancelButton').click(function () {
+                $(NameField).val('');
+                $(PasswordField).val('');
+                $(UserField).val('');
+                $(pwError).text('');
+            });
+
+            $('#SubmitButton').click(function () {
+                var regexVal = /^(?=.*[A-Z])(?=.*\d)(?!.*(.)\1\1)[a-zA-Z0-9@]{8,12}$/;
+                var tempStr = $('#PasswordField').val();
+                if (!regexVal.test(tempStr)) {
+
+                    $('#pwError').text($('#Password').attr('data-tip'));
+                        
+                }
+                else
+                {
+                    alert('This is where the AJAX call would be to the API');
+                }
+            });
+        });
+    </script>
+    <link href="Default.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="SimpleForm" style="width:750px;">        
+        <fieldset>
+            <legend>Simple Form Validation Demo Project</legend>
+            <form>
+                <label id="Name" for="NameField">Name:</label>
+                <input type="text" id="NameField" /><br />
+                <label id="Username" for="UserField">Username:</label>
+                <input type="text" id="UserField" /><br />
+                <label id="Password" for="PasswordField" class="tooltip" data-tip="Proper password MUST have at least 1 letter, 1 number and be 8 - 12 characters long.">Password:</label>
+                <input type="password" id="PasswordField"/><span id="pwError" style="color:#ff0000"></span><br />
+                <input type="button" id="SubmitButton" value="Submit" />
+                <input type="button" id="CancelButton" value="Cancel" />
+            </form>
+        </fieldset>
+    </div>
+</body>
+</html>

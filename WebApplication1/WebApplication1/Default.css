@@ -1,0 +1,25 @@
+﻿
+
+label.tooltip::after {
+    content: attr(data-tip);
+    font-size: 12px;
+    float:right;
+    z-index: 999;
+    white-space: nowrap;
+    bottom: 999px;
+    background: #e0dfcb;
+    color: #000000;
+    padding: 0 7px;
+    line-height: 24px;
+    height: 24px;
+    opacity: 0;
+    transition:opacity all 0.4s ease-out;
+}
+
+label.tooltip:hover::after {
+    opacity: 1;
+}
+
+p {
+    z-index: 1;
+}
